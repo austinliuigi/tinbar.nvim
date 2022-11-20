@@ -196,6 +196,40 @@ M.get_centerside_right_edge = function()
   }
 end
 
+M.get_showcmd = function()
+  local noice_statusline = require("noice").api.status
+  local showcmd = noice_statusline.command.has() and noice_statusline.command.get() or ""
+
+  return {
+    text = showcmd,
+    length = vim.fn.strchars(showcmd),
+    highlight = {
+      name = "WinBarShowcmd",
+      attributes = {
+        foreground = utils.get_hl("Comment", "foreground"),
+        bold = true,
+        blend = 0,
+      },
+    },
+  }
+end
+
+M.get_macro_msg = function()
+  local noice_statusline = require("noice").api.status
+  local macro_msg = noice_statusline.mode.has() and "  " ..noice_statusline.mode.get() or ""
+
+  return {
+    text = macro_msg,
+    length = vim.fn.strchars(macro_msg),
+    highlight = {
+      name = "WinBarMacroMsg",
+      attributes = {
+        foreground = utils.get_hl("Comment", "foreground"),
+      },
+    },
+  }
+end
+
 
 
 --[[ Padding ]]
