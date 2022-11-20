@@ -32,6 +32,9 @@ end
 tinbar.left_components = function()
   return {
     components.get_left_padding(),
+    components.get_showcmd(),
+    components.get_macro_msg(),
+    components.get_left_padding(),
   }
 end
 
