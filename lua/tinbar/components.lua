@@ -90,6 +90,7 @@ end
 -- Treesitter code context
 M.get_navic = function()
   local max_chars = ((vim.api.nvim_win_get_width(0)/2)-(require("tinbar").center_length()/2))*3/4
+  if max_chars < 0 then max_chars = 0 end
 
   local code_context = require("nvim-navic").get_location()                  -- Note: includes statusline/winbar highlighting
   local code_context_underwear = string.gsub(code_context, "%%%#.-%#", "")   -- Remove any highlight codes (e.g. %#Group#)
